@@ -1,16 +1,52 @@
 import http from 'node:http'
 
+// - Criar usuarios
+// - Listagem usuarios
+// - Edicao de usuarios 
+// - Remocao de usuarios
+
+// - HTTP
+// - Metodo HTTP
+// - URL
+
+// GET, POST, PUT, PATCH, DELETE
+
+// GET => Buscar um recurso do back-end
+// POST => Criar um recurso no back-end
+// PUT => Atualizar um recurso no back-end
+// PATCH => Atualizar uma informacao especifica de um recurso no back-end
+// DELETE => Deletar um recurso no back-end
+
+// GET /Users => Buscando usuarios do back-end 
+// POST /Users => Criar um usuario no back-end
+
+// Stateful - Stateless
+
+// JSON - JavaScript Object Notation
+
+// Cabecalhos (Requisicao/resposta) => Metadados
+
+// HTTP Status Code
+
+const users = []
+
 const server = http.createServer((req, res) => {
   const {method, url} = req
-  
+
   if(method === 'GET' && url === '/users') {
-    return res.end('Listagem de usuarios')
+    return res
+    .setHeader('Content-Type', 'application/json')
+    .end(JSON.stringify(users))
   }
   
   if(method === 'POST' && url === '/users') {
-    return res.end('Criacao de usuarios')
+    users.push({
+      id: 1,
+      name: 'John Doe',
+      email: 'johndoe@example.com'
+    })
+    return res.end('Criacao de usuario')
   }
-
 
   return res.end('Hello World')
 })
