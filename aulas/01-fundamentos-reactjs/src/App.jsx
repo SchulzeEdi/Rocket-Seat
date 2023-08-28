@@ -1,5 +1,5 @@
 //JSX = JavaScript + XML (HTML)
-import { Post } from "./Post"
+import { Post } from "./componentes/Post"
 import './global.css'
 import styles from './App.module.css'
 import { Header } from "./componentes/Header"
